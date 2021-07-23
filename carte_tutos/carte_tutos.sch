@@ -1102,9 +1102,42 @@ LED2
 Text Notes 6150 8000 0    118  ~ 0
 connecteurs servo (avec alim)
 Text Notes 6150 8250 0    118  ~ 0
-driver moteur + connecteur encodeur
+driver moteur BD62120AEFJ-E2 + connecteur encodeur
 Text GLabel 8800 4750 2    50   Input ~ 0
 UART6_TX
 Text GLabel 8800 4850 2    50   Input ~ 0
 UART6_RX
+$Comp
+L MCU_Microchip_ATtiny:ATtiny1616-S U?
+U 1 1 60FC42E1
+P 13900 7000
+F 0 "U?" H 13900 8081 50  0000 C CNN
+F 1 "ATtiny1616-S" H 13900 7990 50  0000 C CNN
+F 2 "Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm" H 13900 7000 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATtiny3216_ATtiny1616-data-sheet-40001997B.pdf" H 13900 7000 50  0001 C CNN
+	1    13900 7000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Q_Photo_NPN Q?
+U 1 1 60FCD19A
+P 15200 7000
+F 0 "Q?" H 15390 7046 50  0000 L CNN
+F 1 "Q_Photo_NPN" H 15390 6955 50  0000 L CNN
+F 2 "" H 15400 7100 50  0001 C CNN
+F 3 "~" H 15200 7000 50  0001 C CNN
+	1    15200 7000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 60FCF413
+P 15250 7700
+F 0 "D?" H 15350 7550 50  0000 C CNN
+F 1 "LED" H 15150 7550 50  0000 C CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 15250 7700 50  0001 C CNN
+F 3 "~" H 15250 7700 50  0001 C CNN
+	1    15250 7700
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC
