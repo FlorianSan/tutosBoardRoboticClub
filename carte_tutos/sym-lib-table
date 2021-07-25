@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name tutoLib)(type Legacy)(uri ${KIPRJMOD}/tutoLib.lib)(options "")(descr ""))
+)

@@ -1,0 +1,11 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP BD62120AEFJ
+F https://docs.rs-online.com/a300/0900766b816747fb.pdf
+$ENDCMP
+#
+$CMP TM1637
+F https://www.mcielectronics.cl/website_MCI/static/documents/Datasheet_TM1637.pdf
+$ENDCMP
+#
+#End Doc Library
