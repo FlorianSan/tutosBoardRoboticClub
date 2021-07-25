@@ -19,7 +19,7 @@ U 1 1 60F885DE
 P 8950 5600
 F 0 "U4" H 8050 7550 50  0000 C CNN
 F 1 "NUCLEO64-F411RE" H 9900 7550 50  0000 C CNN
-F 2 "Module:ST_Morpho_Connector_144_STLink" H 9500 3700 50  0001 L CNN
+F 2 "tutoFp:ST_Morpho_Connector_64_STLink" H 9500 3700 50  0001 L CNN
 F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/data_brief/DM00105918.pdf" H 8050 4200 50  0001 C CNN
 	1    8950 5600
 	1    0    0    -1  
