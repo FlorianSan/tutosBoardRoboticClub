@@ -1681,7 +1681,7 @@ F 3 "~" H 15250 8100 50  0001 C CNN
 	1    15250 8100
 	0    1    1    0   
 $EndComp
-Text GLabel 7850 6000 0    50   Input ~ 0
+Text GLabel 10050 6900 2    50   Input ~ 0
 Attiny_link
 Text GLabel 15400 8100 2    50   Input ~ 0
 Attiny_link
@@ -2318,7 +2318,6 @@ $EndComp
 NoConn ~ 10050 7200
 NoConn ~ 10050 7100
 NoConn ~ 10050 7000
-NoConn ~ 10050 6900
 NoConn ~ 10050 6100
 NoConn ~ 10050 6000
 NoConn ~ 10050 5500
@@ -2696,4 +2695,5 @@ Wire Wire Line
 Wire Wire Line
 	8850 10550 8700 10550
 Connection ~ 8700 10550
+NoConn ~ 7850 6000
 $EndSCHEMATC

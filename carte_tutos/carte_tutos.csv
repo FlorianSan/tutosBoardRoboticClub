@@ -1,36 +1,36 @@
 Qty,Reference(s),Value,LibPart,Footprint,Price,Total,
-1,BZ1,Buzzer,Device:Buzzer,Buzzer_Beeper:MagneticBuzzer_ProSignal_ABT-410-RC,"0,4","0,4",
-2,"C1, C2",100p,Device:C,Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder,"0,04","0,08",
-4,"C3, C5, C7, C8",100n,Device:C,Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder,"0,04","0,16",
-2,"C4, C6",100u,Device:C,Capacitor_Tantalum_SMD:CP_EIA-6032-28_Kemet-C_Pad2.25x2.35mm_HandSolder,"0,8","1,6",
-17,"D1, D2, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, D16, D17, D18",LED,Device:LED,LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder,"0,07","1,19",
-1,D3,D_Schottky,Device:D_Schottky,Diode_SMD:D_SOD-123F,"0,364","0,364",https://fr.rs-online.com/web/p/redresseurs-et-diodes-schottky/0485521
-4,"J1, J2, J6, J8",Conn_01x03_Male,Connector:Conn_01x03_Male,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,"0,1","0,4",
-1,J3,Barrel_Jack,Connector:Barrel_Jack,,"0,353","0,353",https://fr.rs-online.com/web/p/connecteurs-d-alimentation-dc/0448376
-1,J4,Conn_01x04_Male,Connector:Conn_01x04_Male,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,"0,1","0,1",
-2,"J5, J7",Conn_01x02_Male,Connector:Conn_01x02_Male,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,"0,1","0,2",
-2,"JP1, JP2",Jumper,Device:Jumper,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,"0,1","0,2",
-1,Q1,SFH_3410-Z,tutoLib:SFH_3410-Z,tutoFp:SFH_3410,"0,4","0,4",https://fr.rs-online.com/web/p/phototransistors/0539864
-9,"R1, R4, R5, R7, R13, R14, R20, R21, R39",100,Device:R_Small,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,"0,02","0,18",
-17,"R2, R3, R19, R22, R27, R28, R29, R30, R31, R32, R33, R34, R35, R36, R37, R40, R41",390,Device:R,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,"0,02","0,34",
-6,"R6, R8, R11, R12, R17, R26",10k,Device:R,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,"0,02","0,12",
-1,R10,220,Device:R,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,"0,02","0,02",
-2,"R15, R16",2.2K,Device:R,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,"0,02","0,04",
-1,R18,1k,Device:R,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,"0,02","0,02",
-1,R38,470,Device:R_Small,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,"0,02","0,02",
-1,RV1,R_POT,Device:R_POT,Potentiometer_THT:Potentiometer_Bourns_PTV09A-1_Single_Vertical,"0,73","0,73",https://fr.rs-online.com/web/p/potentiometres/1814488
-1,RV2,R_POT,Device:R_POT,Potentiometer_THT:Potentiometer_Bourns_PTA2043_Single_Slide,"1,4","1,4",https://fr.rs-online.com/web/p/potentiometres/7377776
-1,SW1,Rotary_Encoder_Switch,Device:Rotary_Encoder,Rotary_Encoder:RotaryEncoder_Alps_EC12E_Vertical_H20mm,"0,77","0,77",https://fr.rs-online.com/web/p/encodeurs-rotatifs-mecaniques/6234221
-4,"SW2, SW3, SW6, SW7",SW_Push,Switch:SW_Push,Button_Switch_SMD:SW_SPST_EVQPE1,"0,493","1,972",https://fr.rs-online.com/web/p/interrupteurs-tactiles/3786325/
-1,SW4,SW_DIP_x02,Switch:SW_DIP_x02,Button_Switch_THT:SW_DIP_SPSTx02_Slide_9.78x7.26mm_W7.62mm_P2.54mm,"0,4","0,4",
-1,SW5,SW_SPDT,Switch:SW_SPDT,Button_Switch_SMD:SW_SPDT_PCM12,"0,94","0,94",
+1,BZ1,Buzzer,Device:Buzzer,Buzzer_Beeper:MagneticBuzzer_ProSignal_ABT-410-RC,0.4,0.4,
+2,"C1, C2",100p,Device:C,Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder,0.04,0.08,
+4,"C3, C5, C7, C8",100n,Device:C,Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder,0.04,0.16,
+2,"C4, C6",100u,Device:C,Capacitor_Tantalum_SMD:CP_EIA-6032-28_Kemet-C_Pad2.25x2.35mm_HandSolder,0.8,1.6,
+17,"D1, D2, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, D16, D17, D18",LED,Device:LED,LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder,0.07,1.19,
+1,D3,D_Schottky,Device:D_Schottky,Diode_SMD:D_SOD-123F,0.364,0.364,https://fr.rs-online.com/web/p/redresseurs-et-diodes-schottky/0485521
+4,"J1, J2, J6, J8",Conn_01x03_Male,Connector:Conn_01x03_Male,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,0.1,0.4,
+1,J3,Barrel_Jack,Connector:Barrel_Jack,,0.353,0.353,https://fr.rs-online.com/web/p/connecteurs-d-alimentation-dc/0448376
+1,J4,Conn_01x04_Male,Connector:Conn_01x04_Male,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,0.1,0.1,
+2,"J5, J7",Conn_01x02_Male,Connector:Conn_01x02_Male,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,0.1,0.2,
+2,"JP1, JP2",Jumper,Device:Jumper,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,0.1,0.2,
+1,Q1,SFH_3410-Z,tutoLib:SFH_3410-Z,tutoFp:SFH_3410,0.4,0.4,https://fr.rs-online.com/web/p/phototransistors/0539864
+9,"R1, R4, R5, R7, R13, R14, R20, R21, R39",100,Device:R_Small,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,0.02,0.18,
+17,"R2, R3, R19, R22, R27, R28, R29, R30, R31, R32, R33, R34, R35, R36, R37, R40, R41",390,Device:R,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,0.02,0.34,
+6,"R6, R8, R11, R12, R17, R26",10k,Device:R,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,0.02,0.12,
+1,R10,220,Device:R,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,0.02,0.02,
+2,"R15, R16",2.2K,Device:R,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,0.02,0.04,
+1,R18,1k,Device:R,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,0.02,0.02,
+1,R38,470,Device:R_Small,Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,0.02,0.02,
+1,RV1,R_POT,Device:R_POT,Potentiometer_THT:Potentiometer_Bourns_PTV09A-1_Single_Vertical,0.73,0.73,https://fr.rs-online.com/web/p/potentiometres/1814488
+1,RV2,R_POT,Device:R_POT,Potentiometer_THT:Potentiometer_Bourns_PTA2043_Single_Slide,1.4,1.4,https://fr.rs-online.com/web/p/potentiometres/7377776
+1,SW1,Rotary_Encoder_Switch,Device:Rotary_Encoder,Rotary_Encoder:RotaryEncoder_Alps_EC12E_Vertical_H20mm,0.77,0.77,https://fr.rs-online.com/web/p/encodeurs-rotatifs-mecaniques/6234221
+4,"SW2, SW3, SW6, SW7",SW_Push,Switch:SW_Push,Button_Switch_SMD:SW_SPST_EVQPE1,0.493,1.972,https://fr.rs-online.com/web/p/interrupteurs-tactiles/3786325/
+1,SW4,SW_DIP_x02,Switch:SW_DIP_x02,Button_Switch_THT:SW_DIP_SPSTx02_Slide_9.78x7.26mm_W7.62mm_P2.54mm,0.4,0.4,
+1,SW5,SW_SPDT,Switch:SW_SPDT,Button_Switch_SMD:SW_SPDT_PCM12,0.94,0.94,
 1,U1,TM1637,tutoLib:TM1637,Package_SO:SOP-20_7.5x12.8mm_P1.27mm,1,1,
-1,U2,CA56-12EWA,Display_Character:CA56-12EWA,Display_7Segment:CA56-12EWA,"0,6","0,6",
-1,U3,BD62120AEFJ,tutoLib:BD62120AEFJ,Package_SO:HTSOP-8-1EP_3.9x4.9mm_P1.27mm_EP2.4x3.2mm,"2,525","2,525",https://fr.rs-online.com/web/p/drivers-de-moteur/1780653
-1,U4,NUCLEO64-F411RE,MCU_Module:NUCLEO64-F411RE,Module:ST_Morpho_Connector_144_STLink,"14,87","14,87",https://fr.rs-online.com/web/p/outils-de-developpement-pour-microcontroleurs/8029425/
-1,U5,TCA9554DBQ,Interface_Expansion:TCA9554DBQ,Package_SO:SSOP-16_3.9x4.9mm_P0.635mm,"1,742","1,742",https://fr.rs-online.com/web/p/expandeurs-e-s/1330708/
+1,U2,CA56-12EWA,Display_Character:CA56-12EWA,Display_7Segment:CA56-12EWA,0.6,0.6,
+1,U3,BD62120AEFJ,tutoLib:BD62120AEFJ,Package_SO:HTSOP-8-1EP_3.9x4.9mm_P1.27mm_EP2.4x3.2mm,2.525,2.525,https://fr.rs-online.com/web/p/drivers-de-moteur/1780653
+1,U4,NUCLEO64-F411RE,MCU_Module:NUCLEO64-F411RE,Module:ST_Morpho_Connector_144_STLink,14.87,14.87,https://fr.rs-online.com/web/p/outils-de-developpement-pour-microcontroleurs/8029425/
+1,U5,TCA9554DBQ,Interface_Expansion:TCA9554DBQ,Package_SO:SSOP-16_3.9x4.9mm_P0.635mm,1.742,1.742,https://fr.rs-online.com/web/p/expandeurs-e-s/1330708/
 1,U6,ATtiny1616-S,MCU_Microchip_ATtiny:ATtiny1616-S,Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm,1,1,https://fr.rs-online.com/web/p/microcontroleurs/1936207
-1,,Jack mâle,,,"2,17","2,17",https://fr.rs-online.com/web/p/connecteurs-d-alimentation-dc/1389405
-1,,PCB,,,3,3,
+1,,Jack mâle,,,2.17,2.17,https://fr.rs-online.com/web/p/connecteurs-d-alimentation-dc/1389405
+1,,PCB,,,5,5,
 ,,,,,,,
-,,,,,,"39,306",
+,,,,,,41.306,
