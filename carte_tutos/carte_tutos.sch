@@ -45,7 +45,7 @@ Text GLabel 13150 1950 0    50   BiDi ~ 0
 SDA1
 Text GLabel 7850 6600 0    50   Input ~ 0
 INT_TCA
-Text GLabel 13150 2050 0    50   Output ~ 0
+Text GLabel 12500 2050 0    50   Output ~ 0
 INT_TCA
 Text GLabel 11350 1850 0    50   BiDi ~ 0
 SCL1
@@ -92,8 +92,6 @@ Wire Wire Line
 	12200 1500 12200 1450
 Wire Wire Line
 	12300 1450 12300 1500
-Text GLabel 12050 2150 0    50   Output ~ 0
-INT_TCA
 $Comp
 L Device:R R17
 U 1 1 60FAFC53
@@ -105,10 +103,6 @@ F 3 "~" H 12600 1650 50  0001 C CNN
 	1    12600 1650
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	12050 2150 12600 2150
-Wire Wire Line
-	12600 2150 12600 1800
 Wire Wire Line
 	12600 1500 12600 1450
 Wire Wire Line
@@ -1039,9 +1033,9 @@ Text GLabel 10050 4100 2    50   Input ~ 0
 BTN1
 Text GLabel 10050 4200 2    50   Input ~ 0
 BTN2
-Text GLabel 10050 4500 2    50   Input ~ 0
-POT
 Text GLabel 10050 5800 2    50   Input ~ 0
+POT
+Text GLabel 10050 4500 2    50   Input ~ 0
 BUZZ
 Text GLabel 10050 4900 2    50   Input ~ 0
 Enc1A
@@ -1434,25 +1428,25 @@ $EndComp
 $Comp
 L power:GND #PWR0133
 U 1 1 612D0A12
-P 8650 10650
-F 0 "#PWR0133" H 8650 10400 50  0001 C CNN
-F 1 "GND" H 8655 10477 50  0000 C CNN
-F 2 "" H 8650 10650 50  0001 C CNN
-F 3 "" H 8650 10650 50  0001 C CNN
-	1    8650 10650
+P 8600 10650
+F 0 "#PWR0133" H 8600 10400 50  0001 C CNN
+F 1 "GND" H 8605 10477 50  0000 C CNN
+F 2 "" H 8600 10650 50  0001 C CNN
+F 3 "" H 8600 10650 50  0001 C CNN
+	1    8600 10650
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	8100 9900 8250 9900
 Wire Wire Line
-	8650 10650 8650 10550
+	8600 10650 8600 10550
 Wire Wire Line
-	8750 10450 8750 10550
+	8700 10450 8700 10550
 Wire Wire Line
-	8750 10550 8650 10550
-Connection ~ 8650 10550
+	8700 10550 8600 10550
+Connection ~ 8600 10550
 Wire Wire Line
-	8650 10550 8650 10450
+	8600 10550 8600 10450
 $Comp
 L Device:C C5
 U 1 1 61300DA5
@@ -1727,7 +1721,7 @@ U 1 1 6191E33F
 P 12700 6750
 F 0 "RV2" V 12550 6650 50  0000 C CNN
 F 1 "R_POT" V 12550 6950 50  0000 C CNN
-F 2 "Potentiometer_THT:Potentiometer_Bourns_PTA2043_Single_Slide" H 12700 6750 50  0001 C CNN
+F 2 "Potentiometer_THT:Potentiometer_Bourns_PTV09A-1_Single_Vertical" H 12700 6750 50  0001 C CNN
 F 3 "~" H 12700 6750 50  0001 C CNN
 	1    12700 6750
 	1    0    0    -1  
@@ -2203,23 +2197,23 @@ Wire Wire Line
 	14550 6500 14250 6500
 Text Label 14250 6500 0    50   ~ 0
 AtLed9
-Text Label 15150 8300 2    50   ~ 0
+Text Label 15150 8500 2    50   ~ 0
 AtLed1
 Text Label 15150 8400 2    50   ~ 0
 AtLed2
-Text Label 15150 8500 2    50   ~ 0
+Text Label 15150 8300 2    50   ~ 0
 AtLed3
-Text Label 15150 8600 2    50   ~ 0
-AtLed4
-Text Label 15150 9300 2    50   ~ 0
-AtLed5
-Text Label 15150 9200 2    50   ~ 0
-AtLed6
-Text Label 15150 8900 2    50   ~ 0
-AtLed7
 Text Label 15150 8800 2    50   ~ 0
-AtLed8
+AtLed4
 Text Label 13050 8800 0    50   ~ 0
+AtLed5
+Text Label 15150 8900 2    50   ~ 0
+AtLed6
+Text Label 15150 9200 2    50   ~ 0
+AtLed7
+Text Label 15150 9300 2    50   ~ 0
+AtLed8
+Text Label 15150 8600 2    50   ~ 0
 AtLed9
 Wire Wire Line
 	15200 9000 14700 9000
@@ -2677,4 +2671,29 @@ Wire Wire Line
 Wire Wire Line
 	1500 1850 1500 1950
 Connection ~ 1500 1950
+$Comp
+L Device:R_Small R9
+U 1 1 612A9269
+P 13000 2050
+F 0 "R9" V 13100 1900 50  0000 C CNN
+F 1 "100" V 13100 2100 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" H 13000 2050 50  0001 C CNN
+F 3 "~" H 13000 2050 50  0001 C CNN
+	1    13000 2050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	13150 2050 13100 2050
+Wire Wire Line
+	12900 2050 12600 2050
+Wire Wire Line
+	12600 1800 12600 2050
+Connection ~ 12600 2050
+Wire Wire Line
+	12600 2050 12500 2050
+Wire Wire Line
+	8850 10550 8850 10450
+Wire Wire Line
+	8850 10550 8700 10550
+Connection ~ 8700 10550
 $EndSCHEMATC
