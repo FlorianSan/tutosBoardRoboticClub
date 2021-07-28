@@ -1,0 +1,6 @@
+[book]
+authors = ["Fabien-B"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Tuto microcontrôleurs"
