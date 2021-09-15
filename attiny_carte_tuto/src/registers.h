@@ -13,6 +13,22 @@ enum Registers {
     MODE
 };
 
+
+#define MODE_Continuous_Mask (0b111 << 5)
+#define MODE_POTC_Mask (1<<7)
+#define MODE_LIGHTC_Mask (1<<6)
+#define MODE_LEDSC_Mask (1<<5)
+#define MODE_LEDSMODE_Mask (0b111)
+
+enum MODE_LEDSMODE_enum {
+  MODE_LEDSMODE_MANUAL      = (0x00 << 0), /* apply LEDS register */
+  MODE_LEDSMODE_POT         = (0x01 << 0), /* potentiometer scale */
+  MODE_LEDSMODE_LIGHT       = (0x02 << 0), /* light scale */
+  MODE_LEDSMODE_POT_SPEED   = (0x03 << 0), /* potentiometer speed */
+  MODE_LEDSMODE_LIGHT_SPEED = (0x04 << 0), /* light speed */
+};
+
+
 void registers_init();
 void writeRegister(Registers addr, uint8_t value);
 uint8_t getRegister(Registers addr);

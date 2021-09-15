@@ -3,11 +3,6 @@
 #include "registers.h"
 #include "hard_interface.h"
 
-#define Continuous_Mask (0b111 << 5)
-#define PotC_Mask (1<<7)
-#define LightC_Mask (1<<6)
-#define LedsC_Mask (1<<5)
-
 enum TXType {
     TX_PING = 0x01,
     TX_READ = 0x02,
@@ -64,34 +59,34 @@ static ContinuousFlags continuous_next() {
     
     uint8_t mode = getRegister(Registers::MODE);
     // test if any flag is set
-    if(!(mode & Continuous_Mask)) {
+    if(!(mode & MODE_Continuous_Mask)) {
         return NONE;
     }
     ContinuousFlags to_send;
     switch (last_sent)
     {
     case POT:
-        if(mode & LightC_Mask) {
+        if(mode & MODE_LIGHTC_Mask) {
             to_send = LIGHT;
-        } else if(mode & LedsC_Mask) {
+        } else if(mode & MODE_LEDSC_Mask) {
             to_send = LEDS;
         } else {
             to_send = POT;
         }
         break;
     case 1:
-        if(mode & LedsC_Mask) {
+        if(mode & MODE_LEDSC_Mask) {
             to_send = LEDS;
-        } else if(mode & PotC_Mask) {
+        } else if(mode & MODE_POTC_Mask) {
             to_send = POT;
         } else {
             to_send = LIGHT;
         }
         break;
     case 2:
-        if(mode & PotC_Mask) {
+        if(mode & MODE_POTC_Mask) {
             to_send = POT;
-        } else if(mode & LightC_Mask) {
+        } else if(mode & MODE_LIGHTC_Mask) {
             to_send = LIGHT;
         } else {
             to_send = LEDS;
@@ -184,8 +179,8 @@ void tutrocol_recv() {
                 break;
             case TX_WRITE:
                 handle_write();
-                // Update leds state, in case LEDS registers were changed
-                update_leds();
+                // // Update leds state, in case LEDS registers were changed
+                // update_leds();
                 break;
             default:
                 Serial.write(rcv.buffer[0]);

@@ -21,14 +21,6 @@ enum ADCChannel {
   ADC_LIGHT,
 };
 
-enum Modes {
-  MODE_MANUAL = 0x00,
-  MODE_POT = 0x01,
-  MODE_LIGHT = 0x02,
-  MODE_POT_SPEED = 0x03,
-  MODE_LIGHT_SPEED = 0x04,
-};
-
 void leds_init() {
   for (int i = 0; i < NB_LEDS; i++) {
     pinMode(leds[i], OUTPUT);
@@ -113,30 +105,30 @@ void periodic_tasks()
 
   if (millis() - led_time > LED_UPDATE_PERIOD) {
     // Run led animation, if any
-    Modes mode = static_cast<Modes>(getRegister(MODE) & 0b111);
+    uint8_t mode = getRegister(MODE) & MODE_LEDSMODE_Mask;
     switch (mode) 
     {
-    case MODE_MANUAL:
+    case MODE_LEDSMODE_MANUAL:
       // do nothing
       break;
-    case MODE_POT:
+    case MODE_LEDSMODE_POT:
     {
       uint16_t pot = getUint16(POT_L);
       led_scale(pot);
       break;
     }
-    case MODE_LIGHT:
+    case MODE_LEDSMODE_LIGHT:
     {
       uint16_t light = getUint16(LIGHT_L);
       led_scale(light);
       break;
     }
-    case MODE_POT_SPEED:
+    case MODE_LEDSMODE_POT_SPEED:
     {
       //TODO
       break;
     }
-    case MODE_LIGHT_SPEED:
+    case MODE_LEDSMODE_LIGHT_SPEED:
     {
       //TODO
       break;
