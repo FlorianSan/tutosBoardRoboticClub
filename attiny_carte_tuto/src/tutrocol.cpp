@@ -150,14 +150,15 @@ static void send_pong() {
 static void handle_read() {
     uint8_t addr = rcv.buffer[1];
     uint8_t count = rcv.buffer[2];
-    if(addr < LEDS_L) {return;}     //registers before LEDS_L are read only.
-    if(addr + count > MAX_ADDR) {return;}
-    send_message(RX_REG, getRegisters(), count);
+    if(addr + count > MAX_ADDR+1) {return;}
+    uint8_t* start = getRegisters() + addr;
+    send_message(RX_REG, start, count);
 }
 
 static void handle_write() {
     uint8_t addr = rcv.buffer[1];
-    for(int i=0; i<rcv.buffer_len-2; addr+i <= MAX_ADDR) {
+    if(addr < LEDS_L) {return;}     //registers before LEDS_L are read only.
+    for(int i=0; i<rcv.buffer_len-2 && addr+i <= MAX_ADDR; i++) {
         auto reg = static_cast<Registers>(addr+i);
         writeRegister(reg, rcv.buffer[i+2]);
     }
