@@ -18,7 +18,15 @@ enum Registers {
 #define MODE_POTC_Mask (1<<7)
 #define MODE_LIGHTC_Mask (1<<6)
 #define MODE_LEDSC_Mask (1<<5)
+#define MODE_CFREQ_Mask (0b11<<3)
 #define MODE_LEDSMODE_Mask (0b111)
+
+enum MODE_CFREQ_enum {
+    MODE_CFREQ_50MS =  (0x00<<3),  /* 50ms  (20Hz) */
+    MODE_CFREQ_100MS = (0x01<<3),  /* 100ms (10Hz) */
+    MODE_CFREQ_200MS = (0x02<<3),  /* 200ms (5Hz ) */
+    MODE_CFREQ_500MS = (0x03<<3),  /* 500ms (2Hz ) */
+};
 
 enum MODE_LEDSMODE_enum {
   MODE_LEDSMODE_MANUAL      = (0x00 << 0), /* apply LEDS register */
