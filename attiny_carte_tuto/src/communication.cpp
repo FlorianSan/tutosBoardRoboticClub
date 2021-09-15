@@ -6,7 +6,12 @@ void init_receiver(Receiver* rcv, int (*char_available)(), uint8_t (*read)()) {
     rcv->char_available = char_available;
 }
 
-RcvCode parse_byte(struct Receiver* rcv, uint8_t b) {
+void init_sender(Sender* sdr, void (*transmit)(uint8_t*, int size)) {
+    sdr->transmit = transmit;
+    sdr->buffer_len = 0;
+}
+
+RcvCode receive(struct Receiver* rcv) {
     while(rcv->char_available()) {
         uint8_t b= rcv->read();
         switch(rcv->state) {
@@ -58,6 +63,6 @@ RcvCode parse_byte(struct Receiver* rcv, uint8_t b) {
 /**
  *  Sends <size> bytes of <data> throught the sender.
  */
-void sendMessage(Sender* sender, uint8_t* data, int size) {
-    sender->transmit(data, size);
+void sendMessage(Sender* sender) {
+    sender->transmit(sender->buffer, sender->buffer_len);
 }

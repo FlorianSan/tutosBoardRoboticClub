@@ -67,28 +67,15 @@ struct Receiver {
     uint8_t bytes_left;
 };
 
-enum TXType {
-    TX_PING,
-    TX_READ,
-    TX_WRITE,
-};
-
 struct Sender {
+    uint8_t buffer[12];
+    int buffer_len;
     void (*transmit)(uint8_t*, int size);
 };
 
 void init_receiver(Receiver* rcv, int (*char_available)(), uint8_t (*read)());
+void init_sender(Sender* sdr, void (*transmit)(uint8_t*, int size));
 
-RcvCode parse_byte(struct Receiver* rcv, uint8_t b);
+RcvCode receive(struct Receiver* rcv);
 
-/**
- *  Sends <size> bytes of <data> throught the sender.
- */
-void sendMessage(Sender* sender, uint8_t* data, int size);
-
-/**
- *  Return type of the received message
- */
-TXType getTxType(Receiver* rcv);
-
-
+void sendMessage(Sender* sender);

@@ -5,3 +5,5 @@
 void tutrocol_init();
 
 void tutrocol_recv();
+
+void sendContinuous();
