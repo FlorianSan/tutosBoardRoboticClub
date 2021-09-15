@@ -4,9 +4,12 @@
 #include <TM1637.h>
 #include <Servo.h>
 #include <Tone.h>
+#include "comm.h"
 //#define ENABLE_HWSERIAL6
 
 TM1637 tm(DISPLAY_CLK, DISPLAY_DIO);
+ATTinyCommunication attiny;
+bool testPingSent = false;
 
 int light_status = 0;
 uint8_t lightB;
@@ -214,6 +217,20 @@ void loop() {
   if(millis() - display_time >= 100) {
     tm.display(pot_filtered);
     display_time = millis();
+    RxMessage msg;
+    if (attiny.getMessage(msg)){
+      if (msg.instruction == RxMessageType::PONG){
+        Serial.println("Pong received !");
+        testPingSent = false;
+      }
+    }
+  }
+
+  if (!testPingSent){
+    if (attiny.sendPing()){
+      testPingSent = true;
+      Serial.println("Ping sent...");
+    }
   }
 
   // while(Serial6.available()) {
