@@ -64,6 +64,16 @@ uint8_t tca_input() {
   return byte;
 }
 
+void send_buffer(uint8_t buffer[], int len_buffer) {
+  buffer[1] = (uint8_t)(len_buffer - 2);
+  uint8_t chk = 0;
+  for(int i=1; i<len_buffer; i++) {
+    chk += buffer[i];
+  }
+  buffer[len_buffer-1] = ~chk;
+  Serial6.write(buffer, len_buffer);
+}
+
 void setup() {
   pinMode(LED1, OUTPUT);
   pinMode(LED2, OUTPUT);
@@ -121,8 +131,11 @@ void setup() {
   tone(BUZZ, 492, 2*ddc);
   delay(4*ddc);
   tone(BUZZ, 523, 2*ddc);
-
 }
+
+#define PING 0x01
+#define READ 0x02
+#define WRITE 0x03
 
 void loop() {
   // potentiometer initial value;
@@ -135,6 +148,16 @@ void loop() {
     auto tca_state = tca_input();
     btn3 = !(tca_state & 0b01000000);
     btn4 = !(tca_state & 0b10000000);
+
+    if(btn3) {
+      // attiny mode pot
+      uint8_t buffer[] = {0xFF, 0, WRITE, 0x06, 1, 0};
+      send_buffer(buffer, 6);
+    } else if(btn4) {
+      // attiny mode manu
+      uint8_t buffer[] = {0xFF, 0, WRITE, 0x06, 0, 0};
+      send_buffer(buffer, 6);
+    }
   }
 
   if(enc_time && millis() - enc_time > 1) {
@@ -205,6 +228,18 @@ void loop() {
       tca_leds = 0b11111111;
     }
     tca_output(tca_leds);
+
+
+    // attiny leds
+    uint16_t leds_attiny = 0;
+    for(int i=0; i<9*(int)pot_filtered/1000; i++) {
+      leds_attiny |= 1<<i;
+    }
+    uint8_t leds_l = leds_attiny&0xFF;
+    uint8_t leds_h = leds_attiny >> 8;
+    uint8_t buffer[] = {0xFF, 0, WRITE, 0x04, leds_l, leds_h, 0};
+    send_buffer(buffer, 7);
+    
     
 
     motor_time = millis();
@@ -214,6 +249,81 @@ void loop() {
   if(millis() - display_time >= 100) {
     tm.display(pot_filtered);
     display_time = millis();
+  }
+
+  while(Serial.available()) {
+    int b = Serial.read();
+    if(b == 'p') {
+      // ping
+      Serial.println("-- ping --");
+      uint8_t buffer[] = {0xFF, 0, PING, 0};
+      send_buffer(buffer, 4);
+    }
+    if(b == 'o') {
+      Serial.println("-- potar --");
+      // read leds
+      uint8_t buffer[] = {0xFF, 0, READ, 0x00, 2, 0};
+      send_buffer(buffer, 6);
+    }
+    if(b == 'i') {
+      Serial.println("-- light --");
+      // read leds
+      uint8_t buffer[] = {0xFF, 0, READ, 0x02, 2, 0};
+      send_buffer(buffer, 6);
+    }
+    if(b == 'l') {
+      Serial.println("-- leds --");
+      // read leds
+      uint8_t buffer[] = {0xFF, 0, READ, 0x04, 2, 0};
+      send_buffer(buffer, 6);
+    }
+    if(b == 'm') {
+      Serial.println("-- mode --");
+      // read leds
+      uint8_t buffer[] = {0xFF, 0, READ, 0x06, 1, 0};
+      send_buffer(buffer, 6);
+    }
+    if(b == 'a') {
+      Serial.println("-- mode manu --");
+      // read leds
+      uint8_t buffer[] = {0xFF, 0, WRITE, 0x06, 0, 0};
+      send_buffer(buffer, 6);
+    }
+    if(b == 'w') {
+      Serial.println("-- pot cont --");
+      // read leds
+      uint8_t buffer[] = {0xFF, 0, WRITE, 0x06, 0b10000000, 0};
+      send_buffer(buffer, 6);
+    }
+    if(b == 'x') {
+      Serial.println("-- light cont --");
+      // read leds
+      uint8_t buffer[] = {0xFF, 0, WRITE, 0x06, 0b01000000, 0};
+      send_buffer(buffer, 6);
+    }
+    if(b == 'c') {
+      Serial.println("-- leds cont 100 --");
+      // read leds
+      uint8_t buffer[] = {0xFF, 0, WRITE, 0x06, 0b00101001, 0};
+      send_buffer(buffer, 6);
+    }
+    if(b == 'v') {
+      Serial.println("-- leds cont 500 --");
+      // read leds
+      uint8_t buffer[] = {0xFF, 0, WRITE, 0x06, 0b00111001, 0};
+      send_buffer(buffer, 6);
+    }
+    if(b == 'f') {
+      Serial.println("-- all leds --");
+      // read leds
+      uint8_t buffer[] = {0xFF, 0, WRITE, 0x04, 0xFF, 1, 0};
+      send_buffer(buffer, 7);
+    }
+  }
+
+  while(Serial6.available()) {
+    Serial.println(Serial6.read(), HEX);
+    //Serial.write(Serial6.read());
   }
 
   // while(Serial6.available()) {
