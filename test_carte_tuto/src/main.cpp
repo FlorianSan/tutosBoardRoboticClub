@@ -115,22 +115,25 @@ void setup() {
     Serial.printf("error TCA : %d\n", ret);
   }
 
-  int tempo = 90;
-  int ddc = (250*30.0/tempo);
-
-  tone(BUZZ, 523, 2*ddc);
-  delay(4*ddc);
-  tone(BUZZ, 392, ddc);
-  delay(2*ddc);
-  tone(BUZZ, 392, ddc);
-  delay(2*ddc);
-  tone(BUZZ, 440, 2*ddc);
-  delay(4*ddc);
-  tone(BUZZ, 392, 2*ddc);
-  delay(8*ddc);
-  tone(BUZZ, 492, 2*ddc);
-  delay(4*ddc);
-  tone(BUZZ, 523, 2*ddc);
+  // skip the melody if BTN1 is pressed
+  if(digitalRead(BTN1)) {
+    int tempo = 90;
+    int ddc = (250*30.0/tempo);
+    delay(200); // avoid weird melody with weird reset timing
+    tone(BUZZ, 523, 2*ddc);
+    delay(4*ddc);
+    tone(BUZZ, 392, ddc);
+    delay(2*ddc);
+    tone(BUZZ, 392, ddc);
+    delay(2*ddc);
+    tone(BUZZ, 440, 2*ddc);
+    delay(4*ddc);
+    tone(BUZZ, 392, 2*ddc);
+    delay(8*ddc);
+    tone(BUZZ, 492, 2*ddc);
+    delay(4*ddc);
+    tone(BUZZ, 523, 2*ddc);
+  }
 }
 
 #define PING 0x01
