@@ -9,7 +9,7 @@ void registers_init() {
     registers[LIGHT_H] = 0;
     registers[LEDS_L] = 0;
     registers[LEDS_H] = 0;
-    registers[MODE] = 1;
+    registers[MODE] = MODE_LEDSMODE_POT;
 }
 
 void writeRegister(Registers addr, uint8_t value) {
