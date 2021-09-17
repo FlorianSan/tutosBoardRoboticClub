@@ -1,3 +1,6 @@
 # Summary
 
-- [Chapter 1](./chapter_1.md)
+- [Présentation](./presentation.md)
+- [Pinout](./pinout.md)
+- [Attiny protocol](./attiny_protocol.md)
+
