@@ -3,9 +3,8 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title></title>
-                        <base href="/">
-        
+        <title>Pinout - Tuto microcontrôleurs</title>
+                
 
         <!-- Custom HTML head -->
         
@@ -83,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="presentation.html"><strong aria-hidden="true">1.</strong> Présentation</a></li><li class="chapter-item expanded "><a href="pinout.html"><strong aria-hidden="true">2.</strong> Pinout</a></li><li class="chapter-item expanded "><a href="attiny_protocol.html"><strong aria-hidden="true">3.</strong> Attiny protocol</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="presentation.html"><strong aria-hidden="true">1.</strong> Présentation</a></li><li class="chapter-item expanded "><a href="pinout.html" class="active"><strong aria-hidden="true">2.</strong> Pinout</a></li><li class="chapter-item expanded "><a href="attiny_protocol.html"><strong aria-hidden="true">3.</strong> Attiny protocol</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -144,14 +143,89 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="document-not-found-404"><a class="header" href="#document-not-found-404">Document not found (404)</a></h1>
-<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
+                        <h1 id="pinout"><a class="header" href="#pinout">Pinout</a></h1>
+<h2 id="nucleo"><a class="header" href="#nucleo">Nucleo</a></h2>
+<table><thead><tr><th>Pin</th><th>Signal</th></tr></thead><tbody>
+<tr><td>PA0</td><td>BTN1 (B1)</td></tr>
+<tr><td>PA1</td><td>BTN2 (B2)</td></tr>
+<tr><td>PA4</td><td>BUZZ</td></tr>
+<tr><td>PA8</td><td>Enc1A</td></tr>
+<tr><td>PA9</td><td>Enc1B</td></tr>
+<tr><td>PA10</td><td>Display_CLK</td></tr>
+<tr><td>PA11</td><td>UART6_TX</td></tr>
+<tr><td>PA12</td><td>UART6_RX</td></tr>
+<tr><td>PA15</td><td>MotB</td></tr>
+<tr><td>PB0</td><td>POT</td></tr>
+<tr><td>PB1</td><td>LED1</td></tr>
+<tr><td>PB4</td><td>SERVO1</td></tr>
+<tr><td>PB5</td><td>SERVO2</td></tr>
+<tr><td>PB6</td><td>Enc2A</td></tr>
+<tr><td>PB7</td><td>Enc2B</td></tr>
+<tr><td>PB8</td><td>SCL1</td></tr>
+<tr><td>PB9</td><td>SDA1</td></tr>
+<tr><td>PB10</td><td>MotA</td></tr>
+<tr><td>PB12</td><td>Attiny_link</td></tr>
+<tr><td>PC4</td><td>Display_DIO</td></tr>
+<tr><td>PC8</td><td>LED2</td></tr>
+<tr><td>PC9</td><td>INT_TCA</td></tr>
+</tbody></table>
+<p>Les jumpers JP1 et JP2 connectent respectivement une résistance de pullup et de pulldown aux signaux BTN1 et BTN2.</p>
+<p>Afin d'utiliser les servomoteurs ou le moteur, il faut alimenter la carte par le connecteur jack DC en 12V (12V sur le connecteur central, GND sur l'extérieur), et régler le jumper JP5 de la nucleo (à côté du bouton RESET) sur &quot;E5V&quot;.
+La led D19 devrait s'allumer.</p>
+<h2 id="tca9554"><a class="header" href="#tca9554">TCA9554</a></h2>
+<table><thead><tr><th>Pin</th><th>Signal</th></tr></thead><tbody>
+<tr><td>P0</td><td>D4</td></tr>
+<tr><td>P1</td><td>D5</td></tr>
+<tr><td>P2</td><td>D6</td></tr>
+<tr><td>P3</td><td>D7</td></tr>
+<tr><td>P4</td><td>D17</td></tr>
+<tr><td>P5</td><td>D18</td></tr>
+<tr><td>P6</td><td>SW6 (B3)</td></tr>
+<tr><td>P7</td><td>SW7 (B4)</td></tr>
+</tbody></table>
+<p>SW5 permet de régler un bit d'adresse (A0).</p>
+<p>SW4 permet de connecter ou pas les pullups sur SDA et SCL.</p>
+<p>La broche INT est connectée sur la broche PC9 de la nucleo.</p>
+<p>Les broches d'adresses A1 et A2 sont connectés à GND.</p>
+<p>datasheet : <a href="http://www.ti.com/lit/ds/symlink/tca9554.pdf">http://www.ti.com/lit/ds/symlink/tca9554.pdf</a></p>
+<h2 id="display"><a class="header" href="#display">Display</a></h2>
+<p>L'afficheur 7segments 4 digits est commandé par un TM1637.</p>
+<p>datasheet : <a href="https://www.mcielectronics.cl/website_MCI/static/documents/Datasheet_TM1637.pdf">https://www.mcielectronics.cl/website_MCI/static/documents/Datasheet_TM1637.pdf</a></p>
+<h2 id="driver-moteur"><a class="header" href="#driver-moteur">Driver moteur</a></h2>
+<p>Le driver moteur est un BD62120AEFJ.</p>
+<p>datasheet : <a href="https://docs.rs-online.com/a300/0900766b816747fb.pdf">https://docs.rs-online.com/a300/0900766b816747fb.pdf</a></p>
+<h2 id="attiny-1616"><a class="header" href="#attiny-1616">ATtiny 1616</a></h2>
+<p><strong>Warning</strong> Si vous regardez ça, vous savez ce que vous faites !</p>
+<table><thead><tr><th>Pin</th><th>Signal</th></tr></thead><tbody>
+<tr><td>PA0</td><td>UPDI</td></tr>
+<tr><td>PA2</td><td>Attiny_link</td></tr>
+<tr><td>PA4</td><td>D10</td></tr>
+<tr><td>PA5</td><td>D9</td></tr>
+<tr><td>PA6</td><td>D8</td></tr>
+<tr><td>PA7</td><td>D16</td></tr>
+<tr><td>PB0</td><td>D11</td></tr>
+<tr><td>PB1</td><td>D13</td></tr>
+<tr><td>PB2</td><td>UART6_RX</td></tr>
+<tr><td>PB3</td><td>UART6_TX</td></tr>
+<tr><td>PB4</td><td>D14</td></tr>
+<tr><td>PB5</td><td>D15</td></tr>
+<tr><td>PC0</td><td>D12</td></tr>
+<tr><td>PC1</td><td>AtPot</td></tr>
+<tr><td>PC2</td><td>AtLight</td></tr>
+</tbody></table>
+<p><strong>Warning</strong> UART6_RX et UART6_TX sont les signaux de la nucleo, qui correspondent donc respectivement à TX et RX de l'ATtiny.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="presentation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
                         
+                                                    <a rel="next" href="attiny_protocol.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
                         <div style="clear: both"></div>
                     </nav>
@@ -159,7 +233,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="presentation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
+                                    <a rel="next" href="attiny_protocol.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                             </nav>
 
         </div>

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Chapter 1 - Tuto microcontrôleurs</title>
+        <title>Attiny protocol - Tuto microcontrôleurs</title>
                 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html" class="active"><strong aria-hidden="true">1.</strong> Chapter 1</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="presentation.html"><strong aria-hidden="true">1.</strong> Présentation</a></li><li class="chapter-item expanded "><a href="pinout.html"><strong aria-hidden="true">2.</strong> Pinout</a></li><li class="chapter-item expanded "><a href="attiny_protocol.html" class="active"><strong aria-hidden="true">3.</strong> Attiny protocol</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -143,12 +143,228 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+                        <h1 id="attiny-protocol"><a class="header" href="#attiny-protocol">Attiny protocol</a></h1>
+<p>The Attiny1616 featured in the tuto board controls 9 leds, and has 2 inputs : a potentiometer and a phototransistor, acting as light sensor.</p>
+<p>The protocol documented here allows you to interact with the Attiny.</p>
+<p>Packets sent by the nucleo to the Attiny will be called <strong>Tx packets</strong>. Those sent by the Attiny to the nucleo will be called <strong>Rx packets</strong>.</p>
+<h2 id="message-format"><a class="header" href="#message-format">Message format</a></h2>
+<p>All messages have the same format :</p>
+<table>
+<tr>
+<td>STX</td>
+<td>LEN</td>
+<td>PAYLOAD[...]</td>
+<td>CHK</td>
+</tr>
+</table>
+<p><strong>STX</strong><br />
+Start of the packet. STX=0xFF.</p>
+<p><strong>LEN</strong><br />
+Byte size of the PAYLOAD and CHK field.</p>
+<p><strong>PAYLOAD</strong><br />
+See Tx packets and Rx Packets.</p>
+<p><strong>CHK</strong><br />
+Checksum for the packet.
+CHK = ~(LEN + PAYLOAD[0] + … + PAYLOAD[N])</p>
+<h2 id="tx-packets"><a class="header" href="#tx-packets">Tx packets</a></h2>
+<p>Payload of Tx packets is made of a 1 byte instruction optionally followed by parameters.</p>
+<table>
+<tr>
+<td>STX</td>
+<td>LEN</td>
+<td>INSTRCTION</td>
+<td>PARAM 1</td>
+<td>...</td>
+<td>PARAM N</td>
+<td>CHK</td>
+</tr>
+</table>
+<p>The instructions are:</p>
+<ul>
+<li>
+<p><strong>PING</strong><br />
+Ping the Attiny.</p>
+<ul>
+<li>Value: <strong>0x01</strong></li>
+<li>Parameters: no parameters</li>
+<li>Answer: PONG message.</li>
+</ul>
+</li>
+<li>
+<p><strong>READ</strong><br />
+Request the values of <em>count</em> registers, starting at <em>address</em>.</p>
+<ul>
+<li>Value: <strong>0x02</strong></li>
+<li>Parameters: Address (1byte), count (1byte)</li>
+<li>Answer: REG message.</li>
+</ul>
+</li>
+<li>
+<p><strong>WRITE</strong><br />
+Write the <em>values</em> at registers starting at <em>address</em>. The register address is auto-incremented.</p>
+<ul>
+<li>Value: <strong>0x03</strong></li>
+<li>Parameters: address, value1, value2, …</li>
+<li>Answer: no answer</li>
+</ul>
+</li>
+</ul>
+<h2 id="rx-packets"><a class="header" href="#rx-packets">Rx packets</a></h2>
+<p>Payload of Rx packets is made of a 1 byte identifier optionally followed by data.</p>
+<ul>
+<li>
+<p><strong>PONG</strong></p>
+<ul>
+<li>Value: 0x11</li>
+<li>Data: no data</li>
+</ul>
+</li>
+<li>
+<p><strong>REG</strong></p>
+<ul>
+<li>Value: 0x12</li>
+<li>Data: values</li>
+</ul>
+</li>
+<li>
+<p><strong>CONTINUOUS</strong></p>
+<ul>
+<li>Value: 0x13</li>
+<li>Data: 2 bytes defined as follow:</li>
+</ul>
+</li>
+</ul>
+<table>
+<tr>
+<td>data_id[1:0]</td>
+<td bgcolor="gray">RESERVED</td>
+<td>data[9:8]</td>
+</tr>
+<tr>
+<td colspan="3" style="text-align:center">data[7:0]</td>
+</tr>
+</table>
+<p>Where data_id identify the nature of the data:</p>
+<ul>
+<li>0x0: potentiometer value</li>
+<li>0x1: light value</li>
+<li>0x2: leds status</li>
+</ul>
+<p>The data itself spans over 10 bits for potentiometer and light values, and 9 bits for leds status.</p>
+<h2 id="registers-description"><a class="header" href="#registers-description">Registers description</a></h2>
+<table><thead><tr><th>Name</th><th>Address</th><th>Access</th></tr></thead><tbody>
+<tr><td>POT_L</td><td>0X00</td><td>R</td></tr>
+<tr><td>POT_H</td><td>0X01</td><td>R</td></tr>
+<tr><td>LIGHT_L</td><td>0X02</td><td>R</td></tr>
+<tr><td>LIGHT_H</td><td>0X03</td><td>R</td></tr>
+<tr><td>LEDS_L</td><td>0X04</td><td>RW</td></tr>
+<tr><td>LEDS_H</td><td>0X05</td><td>RW</td></tr>
+<tr><td>MODE</td><td>0X06</td><td>RW</td></tr>
+</tbody></table>
+<h3 id="pot"><a class="header" href="#pot">POT</a></h3>
+<p>10 bits potentiometer value.</p>
+<div>
+    <div style="width: 60px; float: left;">
+        POT_H<br/>
+        POT_L
+    </div>
+    <div>
+        <table>
+        <tr>
+        <td bgcolor="gray">RESERVED</td>
+        <td>POT[9:8]</td>
+        </tr>
+        <tr>
+        <td colspan="2" style="text-align:center">POT[7:0]</td>
+        </tr>
+        </table>
+     </div>
+</div>
+<h3 id="light"><a class="header" href="#light">LIGHT</a></h3>
+<p>10 bits light value.</p>
+<div>
+    <div style="width: 60px; float: left;">
+        LIGHT_H<br/>
+        LIGHT_L
+    </div>
+    <div>
+        <table>
+        <tr>
+        <td bgcolor="gray">RESERVED</td>
+        <td>LIGHT[9:8]</td>
+        </tr>
+        <tr>
+        <td colspan="2" style="text-align:center">LIGHT[7:0]</td>
+        </tr>
+        </table>
+     </div>
+</div>
+<h3 id="leds"><a class="header" href="#leds">LEDS</a></h3>
+<p>State of the leds. 0 is OFF, 1 is ON.<br />
+Default value: 0</p>
+<div>
+    <div style="width: 60px; float: left;">
+        LEDS_H<br/>
+        LEDS_L
+    </div>
+    <div>
+        <table>
+        <tr>
+        <td bgcolor="gray">RESERVED</td>
+        <td>LEDS[8]</td>
+        </tr>
+        <tr>
+        <td colspan="2" style="text-align:center">LEDS[7:0]</td>
+        </tr>
+        </table>
+     </div>
+</div>
+<h3 id="mode"><a class="header" href="#mode">MODE</a></h3>
+<ul>
+<li><strong>POTC</strong>: if set, the Attiny will send CONTINUOUS potentiometer data. <strong>Default 0</strong>.</li>
+<li><strong>LIGHTC</strong>: if set, the Attiny will send CONTINUOUS light data. <strong>Default 0</strong>.</li>
+<li><strong>LEDSC</strong>: if set, the Attiny will send CONTINUOUS leds data. <strong>Default 0</strong>.</li>
+<li><strong>CFREQ</strong>: frequency at which CONTINUOUS messages will be sent.</li>
+<li><strong>LEDSMODE</strong>: Leds command mode.</li>
+</ul>
+<table>
+<tr>
+<td>POTC</td>
+<td>LIGHTC</td>
+<td>LEDSC</td>
+<td>CFREQ[1:0]</td>
+<td>LEDSMODE[2:0]</td>
+</table>
+<p><strong>bitfields values:</strong></p>
+<div style="display:flex;">
+    <div style="flex:1;">
+        CFREQ[1:0]   
+        <ul>
+        <li>0x0: 50ms (20Hz)</li>
+        <li>0x1: 100ms (10Hz) <strong>default</strong></li>
+        <li>0x2: 200ms (5Hz)</li>
+        <li>0x3: 500ms (2Hz)</li>
+        </ul>
+    </div>
+    <div style="flex:1">
+        LEDSMODE[2:0]  
+        <ul>
+        <li>0x0: MANUAL: write to the LEDS register to command the leds.</li>
+        <li>0x1: Pot value: leds reflect potentiometer value. <strong>default</strong></li>
+        <li>0x2: Light value: leds reflect light value.</li>
+        <li>0x3: Pot speed: not implemented</li>
+        <li>0x4: Light speed: not implemented</li>
+        </ul>
+     </div>
+</div>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="pinout.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
                         
                         
                         <div style="clear: both"></div>
@@ -157,6 +373,9 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="pinout.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
                             </nav>
 
