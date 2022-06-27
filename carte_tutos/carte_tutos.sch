@@ -1410,9 +1410,9 @@ F 3 "https://docs.rs-online.com/a300/0900766b816747fb.pdf" H 9000 9500 50  0001 
 	1    8700 10000
 	1    0    0    -1  
 $EndComp
-Text GLabel 8250 10050 0    50   Input ~ 0
+Text GLabel 8050 10050 0    50   Input ~ 0
 MotA
-Text GLabel 8250 10150 0    50   Input ~ 0
+Text GLabel 8050 10150 0    50   Input ~ 0
 MotB
 $Comp
 L power:GND #PWR0132
@@ -1428,25 +1428,19 @@ $EndComp
 $Comp
 L power:GND #PWR0133
 U 1 1 612D0A12
-P 8600 10650
-F 0 "#PWR0133" H 8600 10400 50  0001 C CNN
-F 1 "GND" H 8605 10477 50  0000 C CNN
-F 2 "" H 8600 10650 50  0001 C CNN
-F 3 "" H 8600 10650 50  0001 C CNN
-	1    8600 10650
+P 8600 10750
+F 0 "#PWR0133" H 8600 10500 50  0001 C CNN
+F 1 "GND" H 8605 10577 50  0000 C CNN
+F 2 "" H 8600 10750 50  0001 C CNN
+F 3 "" H 8600 10750 50  0001 C CNN
+	1    8600 10750
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	8100 9900 8250 9900
 Wire Wire Line
-	8600 10650 8600 10550
-Wire Wire Line
-	8700 10450 8700 10550
-Wire Wire Line
-	8700 10550 8600 10550
-Connection ~ 8600 10550
-Wire Wire Line
-	8600 10550 8600 10450
+	8600 10750 8600 10650
+Connection ~ 8600 10650
 $Comp
 L Device:C C5
 U 1 1 61300DA5
@@ -2689,11 +2683,6 @@ Wire Wire Line
 Connection ~ 12600 2050
 Wire Wire Line
 	12600 2050 12500 2050
-Wire Wire Line
-	8850 10550 8850 10450
-Wire Wire Line
-	8850 10550 8700 10550
-Connection ~ 8700 10550
 NoConn ~ 7850 6000
 $Comp
 L Device:LED D19
@@ -2740,4 +2729,58 @@ F 3 "" H 1500 1950 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Connection ~ 1500 1950
+$Comp
+L Device:R R?
+U 1 1 61413A58
+P 8250 10450
+F 0 "R?" H 8150 10400 50  0000 C CNN
+F 1 "10k" H 8150 10600 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 8180 10450 50  0001 C CNN
+F 3 "~" H 8250 10450 50  0001 C CNN
+	1    8250 10450
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61416181
+P 8150 10450
+F 0 "R?" H 8250 10400 50  0000 C CNN
+F 1 "10k" H 8300 10550 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 8080 10450 50  0001 C CNN
+F 3 "~" H 8150 10450 50  0001 C CNN
+	1    8150 10450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8050 10050 8150 10050
+Wire Wire Line
+	8250 10150 8050 10150
+Wire Wire Line
+	8150 10300 8150 10050
+Connection ~ 8150 10050
+Wire Wire Line
+	8150 10050 8250 10050
+Wire Wire Line
+	8250 10300 8250 10150
+Connection ~ 8250 10150
+Wire Wire Line
+	8150 10650 8250 10650
+Wire Wire Line
+	8600 10650 8700 10650
+Wire Wire Line
+	8150 10600 8150 10650
+Wire Wire Line
+	8250 10600 8250 10650
+Connection ~ 8250 10650
+Wire Wire Line
+	8250 10650 8600 10650
+Wire Wire Line
+	8600 10450 8600 10650
+Wire Wire Line
+	8700 10450 8700 10650
+Connection ~ 8700 10650
+Wire Wire Line
+	8700 10650 8850 10650
+Wire Wire Line
+	8850 10450 8850 10650
 $EndSCHEMATC
