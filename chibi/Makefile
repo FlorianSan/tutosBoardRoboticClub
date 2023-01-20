@@ -89,9 +89,8 @@ PROJECT = ch
 MCU  = cortex-m4
 
 # Imported source files and paths.
-CHIBIOS  := /home/fabien/CHIBIOS/ChibiOS
-VARIOUS = /home/fabien/CHIBIOS/chibios_enac_various_common
-BOARDGEN = $(VARIOUS)/TOOLS/boardGen.pl
+CHIBIOS  := ext/ChibiOS
+BOARDGEN = ext/boardGen.pl
 CONFDIR  := ./cfg
 BUILDDIR := ./build
 DEPDIR   := ./.dep
@@ -189,7 +188,7 @@ include $(RULESPATH)/rules.mk
 $(OBJS): $(CONFDIR)/board.h
 
 $(CONFDIR)/board.h: $(CONFDIR)/board.cfg
-	$(BOARDGEN)  --no-pp-line   $<  $@
+	$(BOARDGEN)  --no-pp-line --opd ext/STM32_open_pin_data  $<  $@
 
 flash: all
 	st-flash write build/ch.bin 0x8000000

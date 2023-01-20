@@ -1,0 +1,6 @@
+[submodule "chibi/ext/STM32_open_pin_data"]
+	path = chibi/ext/STM32_open_pin_data
+	url = https://github.com/STMicroelectronics/STM32_open_pin_data.git
+[submodule "chibi/ext/ChibiOS"]
+	path = chibi/ext/ChibiOS
+	url = https://github.com/ChibiOS/ChibiOS.git

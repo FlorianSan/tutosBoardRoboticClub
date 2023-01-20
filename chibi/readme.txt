@@ -1,9 +1,28 @@
-chibios:
-https://github.com/ChibiOS/ChibiOS.git
-branch: stable_21.11.x
+
+#ChibiOS example
 
 
-tools:
-https://github.com/alex31/chibios_enac_various_common.git
+Install the compiler, the debugger, and the stlink tools:
 
-Edit accordingly variables CHIBIOS and VARIOUS in the Makefile.
+`sudo apt-get install gcc-arm-none-eabi gdb-multiarch stlink-tools`
+
+
+Fetch ChibiOS and the STM32 pin data:
+
+`git submodule update --init --recursive`
+
+
+Build the firmware:
+
+`make`
+
+Flash the MCU:
+
+`make flash`
+
+
+The `ext/boardGen.pl` tool is extracted from https://github.com/alex31/chibios_enac_various_common.git.
+It uses data from https://github.com/STMicroelectronics/STM32_open_pin_data to generate the `board.h` file from a short `board.cfg`.
+
+
+
