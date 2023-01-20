@@ -121,7 +121,7 @@ LDSCRIPT= $(STARTUPLD)/STM32F401xE.ld
 # setting.
 CSRC = $(ALLCSRC) \
 				$(TESTSRC) \
-				main.c
+				src/main.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
