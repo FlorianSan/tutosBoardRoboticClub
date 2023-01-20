@@ -1,5 +1,5 @@
 
-#ChibiOS example
+# ChibiOS example
 
 
 Install the compiler, the debugger, and the stlink tools:
