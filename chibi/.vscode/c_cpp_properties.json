@@ -1,0 +1,51 @@
+{
+    "configurations": [
+        {
+            "name": "ChibiOs",
+            "includePath": [
+                "ext/ChibiOS/os/license",
+                "ext/ChibiOS/os/common/portability/GCC",
+                "ext/ChibiOS/os/common/startup/ARMCMx/compilers/GCC",
+                "ext/ChibiOS/os/common/startup/ARMCMx/devices/STM32F4xx",
+                "ext/ChibiOS/os/common/ext/ARM/CMSIS/Core/Include",
+                "ext/ChibiOS/os/common/ext/ST/STM32F4xx",
+                "ext/ChibiOS/os/hal/include",
+                "ext/ChibiOS/os/hal/ports/common/ARMCMx",
+                "ext/ChibiOS/os/hal/ports/STM32/STM32F4xx",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/ADCv2",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/CANv1",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/CRYPv1",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/DACv1",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/DMAv2",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/EXTIv1",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/GPIOv2",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/I2Cv1",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/MACv1",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/OTGv1",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/QUADSPIv1",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/RTCv2",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/SPIv1",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/SDIOv1",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/SYSTICKv1",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/TIMv1",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/USART",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/USARTv1",
+                "ext/ChibiOS/os/hal/ports/STM32/LLD/xWDGv1",
+                "cfg",
+                "ext/ChibiOS/os/hal/osal/rt-nil",
+                "ext/ChibiOS/os/rt/include",
+                "ext/ChibiOS/os/oslib/include",
+                "ext/ChibiOS/os/common/portability/GCC",
+                "ext/ChibiOS/os/common/ports/ARM-common",
+                "ext/ChibiOS/os/common/ports/ARMv7-M",
+                "ext/ChibiOS/os/test/include",
+                "ext/ChibiOS/test/rt/source/test",
+                "ext/ChibiOS/test/oslib/source/test"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14"
+        }
+    ],
+    "version": 4
+}
