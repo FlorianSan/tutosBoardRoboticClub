@@ -26,3 +26,4 @@ It uses data from https://github.com/STMicroelectronics/STM32_open_pin_data to g
 
 
 
+HAL doc: http://chibiforge.org/doc/21.11/hal/

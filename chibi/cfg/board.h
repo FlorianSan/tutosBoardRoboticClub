@@ -401,7 +401,7 @@
 					 PIN_AFIO_AF(PA15_MOTB, 1))
 
 #define VAL_GPIOB_MODER                 (PIN_MODE_ANALOG(PB00_POTAR) | \
-					 PIN_MODE_OUTPUT(PB01_LED1) | \
+					 PIN_MODE_ALTERNATE(PB01_LED1) | \
 					 PIN_MODE_INPUT(PB02) | \
 					 PIN_MODE_INPUT(PB03) | \
 					 PIN_MODE_ALTERNATE(PB04_SERVO1) | \
@@ -435,7 +435,7 @@
 					 PIN_OTYPE_PUSHPULL(PB15))
 
 #define VAL_GPIOB_OSPEEDR               (PIN_OSPEED_SPEED_VERYLOW(PB00_POTAR) | \
-					 PIN_OSPEED_SPEED_VERYLOW(PB01_LED1) | \
+					 PIN_OSPEED_SPEED_HIGH(PB01_LED1) | \
 					 PIN_OSPEED_SPEED_VERYLOW(PB02) | \
 					 PIN_OSPEED_SPEED_VERYLOW(PB03) | \
 					 PIN_OSPEED_SPEED_HIGH(PB04_SERVO1) | \
@@ -486,7 +486,7 @@
 					 PIN_ODR_LEVEL_LOW(PB15))
 
 #define VAL_GPIOB_AFRL			(PIN_AFIO_AF(PB00_POTAR, 0) | \
-					 PIN_AFIO_AF(PB01_LED1, 0) | \
+					 PIN_AFIO_AF(PB01_LED1, 2) | \
 					 PIN_AFIO_AF(PB02, 0) | \
 					 PIN_AFIO_AF(PB03, 0) | \
 					 PIN_AFIO_AF(PB04_SERVO1, 2) | \
@@ -1448,6 +1448,8 @@
 #define AF_LINE_SWCLK                    0U
 #define AF_PA15_MOTB                     1U
 #define AF_LINE_MOTB                     1U
+#define AF_PB01_LED1                     2U
+#define AF_LINE_LED1                     2U
 #define AF_PB04_SERVO1                   2U
 #define AF_LINE_SERVO1                   2U
 #define AF_PB05_SERVO2                   2U

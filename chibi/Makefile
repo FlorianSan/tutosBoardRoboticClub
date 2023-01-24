@@ -122,7 +122,10 @@ LDSCRIPT= $(STARTUPLD)/STM32F401xE.ld
 CSRC = $(ALLCSRC) \
 				$(TESTSRC) \
 				src/main.c \
-        src/printf.c
+        src/printf.c \
+        src/buzzer.c \
+        src/potar.c \
+        src/servo_led.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
