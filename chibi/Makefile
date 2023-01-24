@@ -25,7 +25,7 @@ endif
 
 # Linker extra options here.
 ifeq ($(USE_LDOPT),)
-  USE_LDOPT = 
+  USE_LDOPT = -lm
 endif
 
 # Enable this if you want link time optimizations (LTO).
@@ -121,7 +121,8 @@ LDSCRIPT= $(STARTUPLD)/STM32F401xE.ld
 # setting.
 CSRC = $(ALLCSRC) \
 				$(TESTSRC) \
-				src/main.c
+				src/main.c \
+        src/printf.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.

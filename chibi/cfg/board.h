@@ -55,7 +55,7 @@
 #define	PA01_BTN2                      1U
 #define	PA02_USART2_TX                 2U
 #define	PA03_USART2_RX                 3U
-#define	PA04                           4U
+#define	PA04_BUZZER                    4U
 #define	PA05_LED_GREEN                 5U
 #define	PA06                           6U
 #define	PA07                           7U
@@ -245,6 +245,7 @@
 #define	LINE_BTN2                      PAL_LINE(GPIOA, 1U)
 #define	LINE_USART2_TX                 PAL_LINE(GPIOA, 2U)
 #define	LINE_USART2_RX                 PAL_LINE(GPIOA, 3U)
+#define	LINE_BUZZER                    PAL_LINE(GPIOA, 4U)
 #define	LINE_LED_GREEN                 PAL_LINE(GPIOA, 5U)
 #define	LINE_ENCB_A                    PAL_LINE(GPIOA, 8U)
 #define	LINE_ENCB_B                    PAL_LINE(GPIOA, 9U)
@@ -300,7 +301,7 @@
 					 PIN_MODE_INPUT(PA01_BTN2) | \
 					 PIN_MODE_ALTERNATE(PA02_USART2_TX) | \
 					 PIN_MODE_ALTERNATE(PA03_USART2_RX) | \
-					 PIN_MODE_INPUT(PA04) | \
+					 PIN_MODE_OUTPUT(PA04_BUZZER) | \
 					 PIN_MODE_OUTPUT(PA05_LED_GREEN) | \
 					 PIN_MODE_INPUT(PA06) | \
 					 PIN_MODE_INPUT(PA07) | \
@@ -317,7 +318,7 @@
 					 PIN_OTYPE_OPENDRAIN(PA01_BTN2) | \
 					 PIN_OTYPE_PUSHPULL(PA02_USART2_TX) | \
 					 PIN_OTYPE_PUSHPULL(PA03_USART2_RX) | \
-					 PIN_OTYPE_PUSHPULL(PA04) | \
+					 PIN_OTYPE_PUSHPULL(PA04_BUZZER) | \
 					 PIN_OTYPE_PUSHPULL(PA05_LED_GREEN) | \
 					 PIN_OTYPE_PUSHPULL(PA06) | \
 					 PIN_OTYPE_PUSHPULL(PA07) | \
@@ -334,7 +335,7 @@
 					 PIN_OSPEED_SPEED_VERYLOW(PA01_BTN2) | \
 					 PIN_OSPEED_SPEED_HIGH(PA02_USART2_TX) | \
 					 PIN_OSPEED_SPEED_HIGH(PA03_USART2_RX) | \
-					 PIN_OSPEED_SPEED_VERYLOW(PA04) | \
+					 PIN_OSPEED_SPEED_HIGH(PA04_BUZZER) | \
 					 PIN_OSPEED_SPEED_VERYLOW(PA05_LED_GREEN) | \
 					 PIN_OSPEED_SPEED_VERYLOW(PA06) | \
 					 PIN_OSPEED_SPEED_VERYLOW(PA07) | \
@@ -351,7 +352,7 @@
 					 PIN_PUPDR_PULLUP(PA01_BTN2) | \
 					 PIN_PUPDR_FLOATING(PA02_USART2_TX) | \
 					 PIN_PUPDR_FLOATING(PA03_USART2_RX) | \
-					 PIN_PUPDR_PULLDOWN(PA04) | \
+					 PIN_PUPDR_FLOATING(PA04_BUZZER) | \
 					 PIN_PUPDR_FLOATING(PA05_LED_GREEN) | \
 					 PIN_PUPDR_PULLDOWN(PA06) | \
 					 PIN_PUPDR_PULLDOWN(PA07) | \
@@ -368,7 +369,7 @@
 					 PIN_ODR_LEVEL_LOW(PA01_BTN2) | \
 					 PIN_ODR_LEVEL_HIGH(PA02_USART2_TX) | \
 					 PIN_ODR_LEVEL_HIGH(PA03_USART2_RX) | \
-					 PIN_ODR_LEVEL_LOW(PA04) | \
+					 PIN_ODR_LEVEL_LOW(PA04_BUZZER) | \
 					 PIN_ODR_LEVEL_LOW(PA05_LED_GREEN) | \
 					 PIN_ODR_LEVEL_LOW(PA06) | \
 					 PIN_ODR_LEVEL_LOW(PA07) | \
@@ -385,7 +386,7 @@
 					 PIN_AFIO_AF(PA01_BTN2, 0) | \
 					 PIN_AFIO_AF(PA02_USART2_TX, 7) | \
 					 PIN_AFIO_AF(PA03_USART2_RX, 7) | \
-					 PIN_AFIO_AF(PA04, 0) | \
+					 PIN_AFIO_AF(PA04_BUZZER, 0) | \
 					 PIN_AFIO_AF(PA05_LED_GREEN, 0) | \
 					 PIN_AFIO_AF(PA06, 0) | \
 					 PIN_AFIO_AF(PA07, 0))
@@ -510,7 +511,7 @@
 					 PIN_MODE_INPUT(PC05) | \
 					 PIN_MODE_INPUT(PC06) | \
 					 PIN_MODE_INPUT(PC07) | \
-					 PIN_MODE_OUTPUT(PC08_LED2) | \
+					 PIN_MODE_ALTERNATE(PC08_LED2) | \
 					 PIN_MODE_INPUT(PC09_TCA_INT) | \
 					 PIN_MODE_INPUT(PC10) | \
 					 PIN_MODE_INPUT(PC11) | \
@@ -544,7 +545,7 @@
 					 PIN_OSPEED_SPEED_VERYLOW(PC05) | \
 					 PIN_OSPEED_SPEED_VERYLOW(PC06) | \
 					 PIN_OSPEED_SPEED_VERYLOW(PC07) | \
-					 PIN_OSPEED_SPEED_VERYLOW(PC08_LED2) | \
+					 PIN_OSPEED_SPEED_HIGH(PC08_LED2) | \
 					 PIN_OSPEED_SPEED_VERYLOW(PC09_TCA_INT) | \
 					 PIN_OSPEED_SPEED_VERYLOW(PC10) | \
 					 PIN_OSPEED_SPEED_VERYLOW(PC11) | \
@@ -596,7 +597,7 @@
 					 PIN_AFIO_AF(PC06, 0) | \
 					 PIN_AFIO_AF(PC07, 0))
 
-#define VAL_GPIOC_AFRH			(PIN_AFIO_AF(PC08_LED2, 0) | \
+#define VAL_GPIOC_AFRH			(PIN_AFIO_AF(PC08_LED2, 2) | \
 					 PIN_AFIO_AF(PC09_TCA_INT, 0) | \
 					 PIN_AFIO_AF(PC10, 0) | \
 					 PIN_AFIO_AF(PC11, 0) | \
@@ -1461,6 +1462,8 @@
 #define AF_LINE_I2C_SDA                  4U
 #define AF_PB10_MOTA                     1U
 #define AF_LINE_MOTA                     1U
+#define AF_PC08_LED2                     2U
+#define AF_LINE_LED2                     2U
 #define AF_PH00_OSC_IN                   0U
 #define AF_LINE_OSC_IN                   0U
 #define AF_PH01_OSC_OUT                  0U
