@@ -21,6 +21,7 @@
 #include "buzzer.h"
 #include "potar.h"
 #include "servo_led.h"
+#include "tca.h"
 
 
 static const SerialConfig serialConfig =  {
@@ -28,6 +29,12 @@ static const SerialConfig serialConfig =  {
   0,
   USART_CR2_STOP1_BITS | USART_CR2_LINEN,
   0
+};
+
+static I2CConfig i2c1Config = {
+    .op_mode = OPMODE_I2C,
+    .clock_speed = 100000,
+    .duty_cycle = STD_DUTY_CYCLE
 };
 
 
@@ -49,8 +56,6 @@ static THD_FUNCTION(Thread1, arg) {
 }
 
 
-
-
 /*
  * Application entry point.
  */
@@ -66,10 +71,19 @@ int main(void) {
   halInit();
   chSysInit();
 
+  tca_t tca = {
+    .i2cd = &I2CD1,
+    .addr = 0x27,
+    .out_state = 0b00010101,
+    .conf = 0b11000000
+  };
+
   sdStart(&SD2, &serialConfig);
+  i2cStart(&I2CD1, &i2c1Config);
   potar_init();
   buzzer_init();
   servo_led_init();
+  tca_init(&tca);
 
 
   /*
@@ -93,7 +107,14 @@ int main(void) {
       led_set(LED2, val);
       servo_set_pos(SERVO1, 800 + 1600*val/4096);
       servo_set_pos(SERVO2, 2400 - 1600*val/4096);
+      uint8_t tca_input = tca_read(&tca);
+      chprintf((BaseSequentialStream *)&SD2, "tca input: %x\r\n", tca_input);
     }
+
+    static int i = 0;
+    tca_write(&tca, ~(1<<(i%6)));
+    i++;
+
     chThdSleepMilliseconds(50);
   
   }

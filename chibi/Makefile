@@ -125,7 +125,8 @@ CSRC = $(ALLCSRC) \
         src/printf.c \
         src/buzzer.c \
         src/potar.c \
-        src/servo_led.c
+        src/servo_led.c \
+        src/tca.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
