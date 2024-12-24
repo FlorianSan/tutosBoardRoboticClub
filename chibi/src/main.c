@@ -38,9 +38,12 @@ static THD_FUNCTION(Thread1, arg) {
   (void)arg;
   chRegSetThreadName("blinker");
   while (true) {
-    palClearLine(LINE_LED_GREEN);
-    chThdSleepMilliseconds(500);
-    palSetLine(LINE_LED_GREEN);
+    // palClearLine(LINE_LED_GREEN);
+    // chThdSleepMilliseconds(500);
+    // palSetLine(LINE_LED_GREEN);
+    // chThdSleepMilliseconds(500);
+    void pin_toggle(void);
+    pin_toggle();
     chThdSleepMilliseconds(500);
   }
 }
@@ -59,11 +62,15 @@ int main(void) {
    */
   halInit();
   chSysInit();
+  
 
   /*
    * Activates the serial driver 2 using the driver default configuration.
    */
   sdStart(&SD2, &serialConfig);
+
+  void pin_cfg(void);
+  pin_cfg();
 
   /*
    * Creates the blinker thread.

@@ -18,6 +18,11 @@ ifeq ($(USE_CPPOPT),)
   USE_CPPOPT = -fno-rtti
 endif
 
+# Rust specific options here.
+ifeq ($(USE_RUSTOPT),)
+  USE_RUSTOPT = -g -O
+endif
+
 # Enable this if you want the linker to remove unused code and data.
 ifeq ($(USE_LINK_GC),)
   USE_LINK_GC = yes
@@ -127,6 +132,10 @@ CSRC = $(ALLCSRC) \
 # setting.
 CPPSRC = $(ALLCPPSRC)
 
+# Rust sources.
+RUSTSRC := $(ALLRUSTSRC) \
+           toggle.rs
+
 # List ASM source files here.
 ASMSRC = $(ALLASMSRC)
 
@@ -137,7 +146,7 @@ ASMXSRC = $(ALLXASMSRC)
 INCDIR = $(CONFDIR) $(ALLINC) $(TESTINC)
 
 # Define C warning options here.
-CWARN = -Wall -Wextra -Wundef -Wstrict-prototypes
+CWARN = -Wall -Wextra -Wundef -Wstrict-prototypes -Wcast-align=strict
 
 # Define C++ warning options here.
 CPPWARN = -Wall -Wextra -Wundef
@@ -175,6 +184,7 @@ ULIBS =
 
 RULESPATH = $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC/mk
 include $(RULESPATH)/arm-none-eabi.mk
+include $(RULESPATH)/rustc.mk
 include $(RULESPATH)/rules.mk
 
 #
